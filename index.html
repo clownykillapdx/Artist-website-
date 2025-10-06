@@ -7,7 +7,6 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Poppins:wght@400;700&display=swap');
 
-    /* Base */
     body {
       margin: 0;
       min-height: 100vh;
@@ -22,18 +21,19 @@
       text-align: center;
     }
 
-    /* Logo */
+    /* LOGO */
     img.logo {
       width: 220px;
       max-width: 80%;
       filter: drop-shadow(0 0 20px rgba(160, 0, 255, 0.8));
       animation: fadeIn 2s ease;
+      margin-bottom: 10px;
     }
 
-    /* Title */
+    /* TITLE */
     h1 {
       font-family: 'UnifrakturCook', cursive;
-      font-size: 52px;
+      font-size: 47px; /* smaller font */
       color: #fff;
       text-shadow: 
         0 0 6px #a000ff,
@@ -44,7 +44,7 @@
       animation: fadeIn 3s ease;
     }
 
-    /* Links */
+    /* LINKS */
     .links a {
       display: block;
       color: #cbb2ff;
@@ -59,7 +59,7 @@
       transform: scale(1.08);
     }
 
-    /* Email */
+    /* EMAIL */
     .email {
       margin-top: 15px;
       font-size: 14px;
@@ -73,9 +73,20 @@
       text-decoration: underline;
     }
 
-    /* SoundCloud iframe */
+    /* SONG TITLE */
+    .song-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: #cbb2ff;
+      font-size: 16px;
+      margin-top: 30px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* SOUNDCLOUD PLAYER */
     iframe {
-      margin-top: 25px;
+      margin-top: 10px;
       border: none;
       border-radius: 10px;
       width: 90%;
@@ -83,79 +94,120 @@
       box-shadow: 0 0 20px rgba(160, 0, 255, 0.4);
     }
 
-    /* Clown animation */
-    .clown {
-      position: fixed;
-      bottom: 10px;
-      left: -100px;
-      width: 40px;
-      height: 60px;
-      background: radial-gradient(circle at 30% 30%, #eee 10%, #ccc 40%, #555 80%);
-      border-radius: 20px 20px 30% 30%;
-      animation: walkAcross 15s linear infinite;
-      z-index: 5;
-    }
-
-    /* Head */
-    .clown::before {
-      content: "";
-      position: absolute;
-      top: -25px;
-      left: 5px;
-      width: 30px;
-      height: 30px;
-      background: radial-gradient(circle at 50% 35%, #fff 20%, #aaa 70%, #222 90%);
-      border-radius: 50%;
-      box-shadow: 0 0 8px #a000ff;
-    }
-
-    /* Balloon (purple stick) */
-    .clown::after {
-      content: "";
-      position: absolute;
-      top: -10px;
-      left: 30px;
-      width: 50px;
-      height: 2px;
-      background: #a000ff;
-      transform: rotate(15deg);
-      box-shadow: 0 0 8px #a000ff;
-    }
-
-    /* Arms & legs (using pseudo divs) */
-    .clown .limb {
-      position: absolute;
-      background: #999;
-      width: 6px;
-      height: 25px;
-      border-radius: 3px;
-      transform-origin: top center;
-      animation: limbMove 0.6s infinite alternate ease-in-out;
-    }
-    .clown .arm-left { top: 10px; left: -6px; }
-    .clown .arm-right { top: 10px; right: -6px; animation-delay: 0.3s; }
-    .clown .leg-left { bottom: 0; left: 5px; height: 30px; }
-    .clown .leg-right { bottom: 0; right: 5px; height: 30px; animation-delay: 0.3s; }
-
-    /* Keyframes */
-    @keyframes walkAcross {
-      0% { left: -120px; }
-      100% { left: 110%; }
-    }
-
-    @keyframes limbMove {
-      0% { transform: rotate(20deg); }
-      100% { transform: rotate(-20deg); }
-    }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* CLOWN ANIMATION */
+    .clown {
+      position: fixed;
+      bottom: 20px;
+      left: -120px;
+      width: 60px;
+      height: 120px;
+      animation: clownWalk 18s linear infinite;
+      z-index: 10;
+    }
+
+    /* Head */
+    .clown-head {
+      position: absolute;
+      top: 0;
+      left: 12px;
+      width: 36px;
+      height: 36px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 5px #a000ff;
+    }
+
+    /* Hair */
+    .clown-head::before,
+    .clown-head::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      width: 15px;
+      height: 15px;
+      background: #00f;
+      border-radius: 50%;
+    }
+    .clown-head::before { left: -12px; }
+    .clown-head::after { right: -12px; }
+
+    /* Nose */
+    .clown-nose {
+      position: absolute;
+      top: 14px;
+      left: 24px;
+      width: 10px;
+      height: 10px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    /* Body */
+    .clown-body {
+      position: absolute;
+      top: 36px;
+      left: 18px;
+      width: 24px;
+      height: 45px;
+      background: linear-gradient(180deg, #ffcc00, #ff6600);
+      border-radius: 10px;
+    }
+
+    /* Legs */
+    .clown-leg {
+      position: absolute;
+      width: 10px;
+      height: 30px;
+      background: #0066ff;
+      border-radius: 5px;
+      bottom: 0;
+      transform-origin: top center;
+      animation: legSwing 0.6s infinite alternate ease-in-out;
+    }
+    .leg-left { left: 12px; }
+    .leg-right { right: 12px; animation-delay: 0.3s; }
+
+    /* Arms */
+    .clown-arm {
+      position: absolute;
+      width: 10px;
+      height: 25px;
+      background: #00cc66;
+      top: 40px;
+      border-radius: 5px;
+      transform-origin: top center;
+      animation: armSwing 0.6s infinite alternate ease-in-out;
+    }
+    .arm-left { left: 0; }
+    .arm-right { right: 0; animation-delay: 0.3s; }
+
+    /* Keyframes */
+    @keyframes clownWalk {
+      0% { left: -100px; }
+      100% { left: 110%; }
+    }
+
+    @keyframes armSwing {
+      0% { transform: rotate(25deg); }
+      100% { transform: rotate(-25deg); }
+    }
+
+    @keyframes legSwing {
+      0% { transform: rotate(-25deg); }
+      100% { transform: rotate(25deg); }
+    }
   </style>
 </head>
 <body>
-  <img class="logo" src="logo.png" alt="CLOWNYKILLA Logo"/>
+
+  <!-- ✅ Replace the src below with your real logo image filename or link -->
+  <img class="logo" src="clownykilla.png" alt="CLOWNYKILLA Logo"/>
+
   <h1>CLOWNYKILLA</h1>
 
   <div class="links">
@@ -169,17 +221,25 @@
     Contact: <a href="mailto:7adrian7torres7@gmail.com">7adrian7torres7@gmail.com</a>
   </div>
 
+  <div class="song-title">OFF THE RIP (PROD. @DJFLIPPP & @MARVELMAYNE)</div>
+
+  <!-- SoundCloud Player -->
   <iframe 
-    scrolling="no" 
-    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/clownykilla/off-the-rip-prod-by-djflippp-marvelmayne&color=%23000000&auto_play=false&show_teaser=true">
+    scrolling="no"
+    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/clownykilla/off-the-rip-prod-by-djflippp-marvelmayne&color=%23000000&auto_play=true&show_teaser=true">
   </iframe>
 
-  <!-- Animated Clown -->
+  <!-- Clown Avatar Animation -->
   <div class="clown">
-    <div class="limb arm-left"></div>
-    <div class="limb arm-right"></div>
-    <div class="limb leg-left"></div>
-    <div class="limb leg-right"></div>
+    <div class="clown-head">
+      <div class="clown-nose"></div>
+    </div>
+    <div class="clown-body"></div>
+    <div class="clown-arm arm-left"></div>
+    <div class="clown-arm arm-right"></div>
+    <div class="clown-leg leg-left"></div>
+    <div class="clown-leg leg-right"></div>
   </div>
+
 </body>
 </html>
