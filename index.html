@@ -2,98 +2,160 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>CLOWNYKILLA | Official Site</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Poppins:wght@400;700&display=swap');
-    body{
-      margin:0;
-      min-height:100vh;
-      background:#000;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      color:#fff;
-      font-family:'Poppins',sans-serif;
-      overflow:hidden;
+
+    /* Base */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #0a0015, #000 70%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      text-align: center;
     }
-    img.logo{
-      width:280px;
-      max-width:80%;
-      filter:drop-shadow(0 0 20px rgba(160,0,255,0.6));
+
+    /* Logo */
+    img.logo {
+      width: 220px;
+      max-width: 80%;
+      filter: drop-shadow(0 0 20px rgba(160, 0, 255, 0.8));
+      animation: fadeIn 2s ease;
     }
-    h1{
-      font-family:'UnifrakturCook',cursive;
-      font-size:48px;
-      color:#000;
-      text-shadow:
-        0 0 4px #a000ff,
-        0 0 8px #a000ff,
-        0 0 16px #a000ff;
-      margin:20px 0 10px;
-      letter-spacing:2px;
+
+    /* Title */
+    h1 {
+      font-family: 'UnifrakturCook', cursive;
+      font-size: 52px;
+      color: #fff;
+      text-shadow: 
+        0 0 6px #a000ff,
+        0 0 14px #a000ff,
+        0 0 28px #a000ff;
+      margin: 25px 0 15px;
+      letter-spacing: 2px;
+      animation: fadeIn 3s ease;
     }
-    .links a{
-      display:block;
-      color:#cbb2ff;
-      text-decoration:none;
-      font-family:'UnifrakturCook',cursive;
-      font-size:22px;
-      margin:6px 0;
-      transition:color .2s;
+
+    /* Links */
+    .links a {
+      display: block;
+      color: #cbb2ff;
+      text-decoration: none;
+      font-family: 'UnifrakturCook', cursive;
+      font-size: 22px;
+      margin: 8px 0;
+      transition: color 0.25s ease, transform 0.25s ease;
     }
-    .links a:hover{color:#fff;}
-    .email{
-      margin-top:10px;
-      font-size:14px;
-      color:#aaa;
+    .links a:hover {
+      color: #fff;
+      transform: scale(1.08);
     }
-    /* clown animation */
-    .clown{
-      position:fixed;
-      bottom:10px;
-      left:-80px;
-      width:60px;
-      height:80px;
-      background:radial-gradient(circle at 30% 30%,#fff 10%,#ccc 35%,#222 70%);
-      border-radius:30% 30% 40% 40%;
-      animation:walk 15s linear infinite;
+
+    /* Email */
+    .email {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #aaa;
     }
-    .clown::before{
-      content:"";
-      position:absolute;
-      top:-20px;
-      left:10px;
-      width:40px;
-      height:40px;
-      background:radial-gradient(circle at 50% 35%,#fff 25%,#aaa 60%,#000 90%);
-      border-radius:50%;
+    .email a {
+      color: #7d55ff;
+      text-decoration: none;
     }
-    .clown::after{
-      content:"";
-      position:absolute;
-      top:20px;
-      left:50px;
-      width:50px;
-      height:4px;
-      background:#663399;
-      transform:rotate(20deg);
+    .email a:hover {
+      text-decoration: underline;
     }
-    @keyframes walk{
-      0%{left:-100px;}
-      100%{left:110%;}
+
+    /* SoundCloud iframe */
+    iframe {
+      margin-top: 25px;
+      border: none;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 20px rgba(160, 0, 255, 0.4);
     }
-    iframe{
-      margin-top:20px;
-      border:none;
+
+    /* Clown animation */
+    .clown {
+      position: fixed;
+      bottom: 10px;
+      left: -100px;
+      width: 40px;
+      height: 60px;
+      background: radial-gradient(circle at 30% 30%, #eee 10%, #ccc 40%, #555 80%);
+      border-radius: 20px 20px 30% 30%;
+      animation: walkAcross 15s linear infinite;
+      z-index: 5;
+    }
+
+    /* Head */
+    .clown::before {
+      content: "";
+      position: absolute;
+      top: -25px;
+      left: 5px;
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(circle at 50% 35%, #fff 20%, #aaa 70%, #222 90%);
+      border-radius: 50%;
+      box-shadow: 0 0 8px #a000ff;
+    }
+
+    /* Balloon (purple stick) */
+    .clown::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 30px;
+      width: 50px;
+      height: 2px;
+      background: #a000ff;
+      transform: rotate(15deg);
+      box-shadow: 0 0 8px #a000ff;
+    }
+
+    /* Arms & legs (using pseudo divs) */
+    .clown .limb {
+      position: absolute;
+      background: #999;
+      width: 6px;
+      height: 25px;
+      border-radius: 3px;
+      transform-origin: top center;
+      animation: limbMove 0.6s infinite alternate ease-in-out;
+    }
+    .clown .arm-left { top: 10px; left: -6px; }
+    .clown .arm-right { top: 10px; right: -6px; animation-delay: 0.3s; }
+    .clown .leg-left { bottom: 0; left: 5px; height: 30px; }
+    .clown .leg-right { bottom: 0; right: 5px; height: 30px; animation-delay: 0.3s; }
+
+    /* Keyframes */
+    @keyframes walkAcross {
+      0% { left: -120px; }
+      100% { left: 110%; }
+    }
+
+    @keyframes limbMove {
+      0% { transform: rotate(20deg); }
+      100% { transform: rotate(-20deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <!-- replace "logo.png" with your uploaded image filename -->
   <img class="logo" src="logo.png" alt="CLOWNYKILLA Logo"/>
-
   <h1>CLOWNYKILLA</h1>
 
   <div class="links">
@@ -103,13 +165,21 @@
     <a href="https://www.bandlab.com/post/f935e369-5a98-f011-8e62-000d3aa6e7e5" target="_blank">BandLab</a>
   </div>
 
-  <div class="email">Contact: <a href="mailto:7adrian7torres7@gmail.com">7adrian7torres7@gmail.com</a></div>
+  <div class="email">
+    Contact: <a href="mailto:7adrian7torres7@gmail.com">7adrian7torres7@gmail.com</a>
+  </div>
 
-  <!-- SoundCloud embed (manual play) -->
-  <iframe width="100%" height="166" scrolling="no" 
+  <iframe 
+    scrolling="no" 
     src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/clownykilla/off-the-rip-prod-by-djflippp-marvelmayne&color=%23000000&auto_play=false&show_teaser=true">
   </iframe>
 
-  <div class="clown"></div>
+  <!-- Animated Clown -->
+  <div class="clown">
+    <div class="limb arm-left"></div>
+    <div class="limb arm-right"></div>
+    <div class="limb leg-left"></div>
+    <div class="limb leg-right"></div>
+  </div>
 </body>
 </html>
