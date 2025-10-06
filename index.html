@@ -3,38 +3,113 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>CLOWNYKILLA — Official Contact</title>
+  <title>CLOWNYKILLA | Official Site</title>
   <style>
-    body{font-family:system-ui,Segoe UI,Arial;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:20px;background:#f7f7f7}
-    .card{background:white;padding:28px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.08);max-width:680px;width:100%}
-    h1{margin:0 0 8px;font-size:28px;text-transform:uppercase;letter-spacing:1px}
-    p{margin:6px 0 16px;color:#333}
-    a.email{display:inline-block;padding:10px 14px;border-radius:8px;background:#111;color:#fff;text-decoration:none;font-weight:600}
-    .links{margin-top:14px;line-height:1.8}
-    .links a{text-decoration:none;color:#0070f3;font-weight:500}
-    .small{color:#666;font-size:13px;margin-top:10px}
+    @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Poppins:wght@400;700&display=swap');
+    body{
+      margin:0;
+      min-height:100vh;
+      background:#000;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-family:'Poppins',sans-serif;
+      overflow:hidden;
+    }
+    img.logo{
+      width:280px;
+      max-width:80%;
+      filter:drop-shadow(0 0 20px rgba(160,0,255,0.6));
+    }
+    h1{
+      font-family:'UnifrakturCook',cursive;
+      font-size:48px;
+      color:#000;
+      text-shadow:
+        0 0 4px #a000ff,
+        0 0 8px #a000ff,
+        0 0 16px #a000ff;
+      margin:20px 0 10px;
+      letter-spacing:2px;
+    }
+    .links a{
+      display:block;
+      color:#cbb2ff;
+      text-decoration:none;
+      font-family:'UnifrakturCook',cursive;
+      font-size:22px;
+      margin:6px 0;
+      transition:color .2s;
+    }
+    .links a:hover{color:#fff;}
+    .email{
+      margin-top:10px;
+      font-size:14px;
+      color:#aaa;
+    }
+    /* clown animation */
+    .clown{
+      position:fixed;
+      bottom:10px;
+      left:-80px;
+      width:60px;
+      height:80px;
+      background:radial-gradient(circle at 30% 30%,#fff 10%,#ccc 35%,#222 70%);
+      border-radius:30% 30% 40% 40%;
+      animation:walk 15s linear infinite;
+    }
+    .clown::before{
+      content:"";
+      position:absolute;
+      top:-20px;
+      left:10px;
+      width:40px;
+      height:40px;
+      background:radial-gradient(circle at 50% 35%,#fff 25%,#aaa 60%,#000 90%);
+      border-radius:50%;
+    }
+    .clown::after{
+      content:"";
+      position:absolute;
+      top:20px;
+      left:50px;
+      width:50px;
+      height:4px;
+      background:#663399;
+      transform:rotate(20deg);
+    }
+    @keyframes walk{
+      0%{left:-100px;}
+      100%{left:110%;}
+    }
+    iframe{
+      margin-top:20px;
+      border:none;
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>CLOWNYKILLA</h1>
-    <p>Official artist contact & social links</p>
+  <!-- replace "logo.png" with your uploaded image filename -->
+  <img class="logo" src="logo.png" alt="CLOWNYKILLA Logo"/>
 
-    <div>
-      <strong>Contact: </strong>
-      <a class="email" href="mailto:7adrian7torres7@gmail.com">7adrian7torres7@gmail.com</a>
-    </div>
+  <h1>CLOWNYKILLA</h1>
 
-    <div class="links">
-      <p>Follow & listen:</p>
-      <p>
-        🎵 <a href="https://on.soundcloud.com/SSvlImUe9PgZEMbxju" target="_blank">SoundCloud</a><br>
-        📸 <a href="https://www.instagram.com/clownykilla?igsh=Mnl6aW91Z25kcTRh" target="_blank">Instagram</a><br>
-        🎬 <a href="https://vm.tiktok.com/ZPH7Y6vTbMmxT-5pt1M/" target="_blank">TikTok</a>
-      </p>
-    </div>
-
-    <div class="small">This page publicly lists the email address used to request Spotify for Artists access.</div>
+  <div class="links">
+    <a href="https://on.soundcloud.com/SSvlImUe9PgZEMbxju" target="_blank">SoundCloud</a>
+    <a href="https://vm.tiktok.com/ZPH7Y6vTbMmxT-5pt1M/" target="_blank">TikTok</a>
+    <a href="https://www.instagram.com/clownykilla?igsh=Mnl6aW91Z25kcTRh" target="_blank">Instagram</a>
+    <a href="https://www.bandlab.com/post/f935e369-5a98-f011-8e62-000d3aa6e7e5" target="_blank">BandLab</a>
   </div>
+
+  <div class="email">Contact: <a href="mailto:7adrian7torres7@gmail.com">7adrian7torres7@gmail.com</a></div>
+
+  <!-- SoundCloud embed (manual play) -->
+  <iframe width="100%" height="166" scrolling="no" 
+    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/clownykilla/off-the-rip-prod-by-djflippp-marvelmayne&color=%23000000&auto_play=false&show_teaser=true">
+  </iframe>
+
+  <div class="clown"></div>
 </body>
 </html>
