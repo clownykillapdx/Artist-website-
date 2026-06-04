@@ -1592,7 +1592,7 @@
     <p class="hero-tagline">Portland Oregon · Underground Hip-Hop</p>
 
     <div class="hero-buttons">
-      <a href="#release" class="btn-primary">Listen Now</a>
+      <a href="#release" class="btn-primary" onclick="setTimeout(()=>playSCTrack('https://on.soundcloud.com/qRr2Sr0SAYQXa10xD1'),600)">Listen Now</a>
       <a href="#videos" class="btn-outline">Watch Videos</a>
       <a href="#release" class="btn-ghost">
         Scroll To Enter
@@ -1628,7 +1628,7 @@
       </div>
 
       <div class="release-info reveal reveal-delay-2">
-        <div class="release-ep-label">EP — 2024</div>
+        <div class="release-ep-label">EP — 2026</div>
         <h3 class="release-title">OFF<br>THE<br>RIP</h3>
         <div class="release-credits">
           Produced by<br>
@@ -1636,41 +1636,43 @@
           808 Kartel Records
         </div>
 
+        <!-- SoundCloud widget — plays the actual track -->
         <div class="release-embed">
           <iframe
-            style="border-radius:0"
-            src="https://open.spotify.com/embed/artist/0RRnwKZx9MIcZyQluXWuNB?utm_source=generator&theme=0"
+            id="sc-widget"
             width="100%"
-            height="200"
-            frameBorder="0"
-            allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
+            height="166"
+            frameborder="no"
+            allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//on.soundcloud.com/qRr2Sr0SAYQXa10xD1&color=%23ffffff&inverse=true&auto_play=false&show_user=false&show_reposts=false&show_teaser=false&hide_related=true">
           </iframe>
         </div>
 
         <div class="tracklist">
-          <div class="track-item">
+          <div class="track-item" onclick="playSCTrack('https://on.soundcloud.com/qRr2Sr0SAYQXa10xD1')" style="cursor:pointer" title="Play on SoundCloud">
             <span class="track-num">01</span>
             <span class="track-title">Off The Rip</span>
-            <span class="track-dur">— : —</span>
+            <span class="track-dur" style="color:var(--gray-light)">▶</span>
           </div>
-          <div class="track-item">
+          <div class="track-item" onclick="playSCTrack('https://on.soundcloud.com/PcCk79Klv2G4ReLkSN')" style="cursor:pointer" title="Play on SoundCloud">
             <span class="track-num">02</span>
-            <span class="track-title">TBA</span>
-            <span class="track-dur">— : —</span>
+            <span class="track-title">Fade</span>
+            <span class="track-dur" style="color:var(--gray-light)">▶</span>
           </div>
-          <div class="track-item">
+          <div class="track-item" onclick="playSCTrack('https://on.soundcloud.com/SA4KzuJRlaCQUMSdty')" style="cursor:pointer" title="Play on SoundCloud">
             <span class="track-num">03</span>
-            <span class="track-title">TBA</span>
-            <span class="track-dur">— : —</span>
+            <span class="track-title">TY</span>
+            <span class="track-dur" style="color:var(--gray-light)">▶</span>
           </div>
-          <div class="track-item">
+          <div class="track-item" onclick="playSCTrack('https://on.soundcloud.com/PcCk79Klv2G4ReLkSN')" style="cursor:pointer" title="Play on SoundCloud">
             <span class="track-num">04</span>
-            <span class="track-title">TBA</span>
-            <span class="track-dur">— : —</span>
+            <span class="track-title">Draco Drag</span>
+            <span class="track-dur" style="color:var(--gray-light)">▶</span>
           </div>
         </div>
+        <p style="font-family:var(--font-condensed);font-size:0.58rem;letter-spacing:0.2em;color:var(--gray-dark);text-transform:uppercase;margin-top:12px">
+          Click a track to play · Powered by SoundCloud
+        </p>
       </div>
     </div>
   </div>
@@ -1824,18 +1826,13 @@
     <div class="about-grid">
       <div class="about-photo reveal reveal-delay-1">
         <div class="about-photo-frame">
-          <!--
-            PHOTO: Replace this block with:
-            <img src="clownykilla-djflippp.jpg" alt="CLOWNYKILLA and DJ FLIPPP"
-                 style="width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.1);">
-          -->
-          <div class="about-photo-inner">
-            <div class="about-photo-placeholder-text">
-              CLOWNYKILLA<br>&amp;<br>DJ FLIPPP
-            </div>
-            <div class="about-photo-placeholder-sub">808 Kartel Records</div>
-          </div>
-          <div class="about-photo-caption">CLOWNYKILLA &amp; DJ FLIPPP — Portland Metro</div>
+          <img
+            src="https://miro.medium.com/v2/resize:fit:1079/1*sqE3TtpWId6TEY1gTRGMEA.jpeg"
+            alt="CLOWNYKILLA and DJ FLIPPP in the studio — 808 Kartel Records"
+            style="width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(100%) contrast(1.15);"
+            loading="lazy"
+          >
+          <div class="about-photo-caption">CLOWNYKILLA &amp; DJ FLIPPP — Studio Session · 808 Kartel Records</div>
         </div>
       </div>
 
@@ -2242,7 +2239,15 @@
     }
   }
 
-  // ——— Smooth anchor scrolling with offset ———
+  // ——— SoundCloud track switcher ———
+  function playSCTrack(scUrl) {
+    const widget = document.getElementById('sc-widget');
+    if (!widget) return;
+    const encoded = encodeURIComponent(scUrl);
+    widget.src = `https://w.soundcloud.com/player/?url=${encoded}&color=%23ffffff&inverse=true&auto_play=true&show_user=false&show_reposts=false&show_teaser=false&hide_related=true`;
+    // Scroll player into view smoothly
+    widget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const target = document.querySelector(this.getAttribute('href'));
